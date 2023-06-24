@@ -1,18 +1,19 @@
 package budget;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        JFrame frame = new JFrame(); // create a frame
-        frame.setTitle("Your NYC Budget"); // set the title of the frame
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // set the close operation of the frame to the exit button
-                                                              // in top right
+        JLabel label = new JLabel(); // creates an instance of the Jlabel class
+        label.setText("Hello"); // sets the text of the label to "Hello"
 
-        frame.setSize(500, 500); // set the x,y size of the frame
-        frame.setVisible(true); // make the frame visible
+        MyFrame myFrame = new MyFrame(); // creates an instance of the MyFrame class (which extends JFrame)
+        myFrame.add(label); // adds the label to the frame
 
     }
 
