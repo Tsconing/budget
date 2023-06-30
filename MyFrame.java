@@ -3,7 +3,12 @@ package budget;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,18 +23,40 @@ public class MyFrame extends JFrame implements ActionListener {
                                                              // in top right
 
         this.setResizable(true); // set the frame to be resizable
-        this.setVisible(true); // make the frame visible
 
         this.setSize(1000, 1000); // set the x,y size of the frame
         this.getContentPane().setBackground(Color.LIGHT_GRAY); // set the background color of the frame
-        this.setLayout(null);
 
-        button = new JButton();
-        button.setBounds(0, 0, 100, 100);
-        button.addActionListener(this);
-        this.add(button);
+        // to set a frame with the flow layout we setLayout to new FlowLayout
+        this.setLayout(new GridLayout(8, 2));
 
-    }
+        JOptionPane introduction = new JOptionPane(, ALLBITS, ABORT, defaultCloseOperation, null, getComponentListeners(), accessibleContext)
+
+    //     JButton calculateButton = new JButton("Calculate");
+    //     JButton exit = new JButton("exit");
+
+
+
+    //     JTextField TF_salary = new JTextField();
+    //     JTextField Tf_rent = new JTextField();
+    //     JTextField TF_
+
+
+
+
+    //     JLabel rent = new JLabel("Enter your rent");
+
+    //     // button = new JButton();
+    //     // button.setText("This is the button");
+    //     // button.setBounds(0, 0, 100, 100);
+    //     // button.addActionListener(this);
+    //     // this.add(button);
+    //     this.add(button1);
+    //     this.add(TF_salary);
+    //     this.add(rent);
+
+    //     this.setVisible(true); // make the frame visible
+    // }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -38,8 +65,6 @@ public class MyFrame extends JFrame implements ActionListener {
             System.out.println("Poop");
 
         }
-
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 
 }
