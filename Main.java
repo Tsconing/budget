@@ -25,9 +25,6 @@ public class Main {
             double Pre_Tax_Salary = Double.parseDouble(string_Pre_Tax_Salary);
             double post_tax_salary = 0;
 
-            JOptionPane.showMessageDialog(null,
-                    " your post tax salary will come out to be around...\n\n");
-
             if (Pre_Tax_Salary < 0) {
                 JOptionPane.showMessageDialog(null, "Invalid salary");
                 System.exit(0);
@@ -128,6 +125,40 @@ public class Main {
                             + " per month... \n\nLeaving you with around $" + (monthly_income - monthly_expenses)
                             + " excess money per month",
                     "Essential Expenses", JOptionPane.INFORMATION_MESSAGE);
+
+            JOptionPane.showMessageDialog(null,
+                    "Now we have to take into account things like insurance, entertainment, etc..."
+                            + "\n\nWe will group health insurance and renters insurance together and call it $120 per month to be cautious :).",
+                    "Expected Insurance", JOptionPane.INFORMATION_MESSAGE);
+            Double Insurance = 120.0;
+
+            JOptionPane.showMessageDialog(null,
+                    "Now this is the hard part... \n\nMiscellanneous and entertainment expenses can vary greatly from person to person.\n\nLet's budget $100 per month for miscellaneous things like toilet paper, soap, facewash, etc.",
+                    "Expected Miscellanneous Expenses", JOptionPane.INFORMATION_MESSAGE);
+            Double Miscellanneous = 100.0;
+
+            String Entertainment = JOptionPane.showInputDialog(null,
+                    "How much do you spend on entertainment such as Netflix, Spotify, etc. per month?",
+                    "Expected Entertainment Expenses", JOptionPane.INFORMATION_MESSAGE);
+            Double Entertainment_Expenses = Double.parseDouble(Entertainment);
+
+            String Going_out = JOptionPane.showInputDialog(null, "How much do you spend on going out per month?",
+                    "Expected Late Night Expenses", JOptionPane.INFORMATION_MESSAGE);
+            Double Going_Out = Double.parseDouble(Going_out);
+
+            String Other_expenses = JOptionPane.showInputDialog(null,
+                    "Do you think we missed anything?\n\nIf yes, respond with any other expenses you can think of below.",
+                    "Expected Additional Expenses", JOptionPane.INFORMATION_MESSAGE);
+            Double Other_Expenses = Double.parseDouble(Other_expenses);
+
+            Double total_expenses = monthly_expenses + Insurance + Miscellanneous + Entertainment_Expenses + Going_Out
+                    + Other_Expenses;
+
+            JOptionPane.showMessageDialog(null,
+                    "Now we can calculate you total monthly expenses!\n\n Taking into account these expenses, you will be spending around $"
+                            + total_expenses + " per month \n\nWhich will leave you with around $"
+                            + ((post_tax_salary / 12) - total_expenses) + " per month.",
+                    "Final Budget", JOptionPane.INFORMATION_MESSAGE);
 
         } else {
             JOptionPane.showMessageDialog(null, "Goodbye " + name + "!");
