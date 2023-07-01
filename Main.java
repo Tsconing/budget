@@ -44,7 +44,7 @@ public class Main {
                 post_tax_salary = Pre_Tax_Salary * 0.68;
                 JOptionPane.showMessageDialog(null,
                         "Based on last years taxes for the NYC area, your post tax salary without taking into account pretax withdrawals, such as retirement, is: $"
-                                + post_tax_salary + "This would make you monthly take home pay around $"
+                                + post_tax_salary + "\n\nThis would make you monthly take home pay around $"
                                 + post_tax_salary / 12,
                         "Post Tax Salary", JOptionPane.INFORMATION_MESSAGE);
 
@@ -72,6 +72,62 @@ public class Main {
                                 + post_tax_salary / 12,
                         "Post Tax Salary", JOptionPane.INFORMATION_MESSAGE);
             }
+
+            JOptionPane.showMessageDialog(null,
+                    "In theory your rent should be no more than 30% of your pre-tax salary. Which would put you around... \n\n$"
+                            + Pre_Tax_Salary / 12 * 0.30 + " per month ",
+                    "Expected Rent", JOptionPane.INFORMATION_MESSAGE);
+
+            String string_Rent = JOptionPane.showInputDialog(null, "What is your monthly rent?");
+            double Rent = Double.parseDouble(string_Rent);
+
+            if (Rent > Pre_Tax_Salary / 12 * 0.30) {
+                JOptionPane.showMessageDialog(null,
+                        "Your rent is too high! \n\nYou should be spending no more than $"
+                                + Pre_Tax_Salary / 12 * 0.30 + " per month on rent",
+                        "Rent", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "Your rent is within the recommended range! \n\nYou should be spending no more than $"
+                                + Pre_Tax_Salary / 12 * 0.30 + " per month on rent",
+                        "Rent", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            JOptionPane.showMessageDialog(null,
+                    "We will assume transportation will probably be around $200 per month for subway and also account for potential uber/taxis charges",
+                    "Expected Transportation", JOptionPane.INFORMATION_MESSAGE);
+            Double Transportation = 200.0;
+
+            int userchoice2 = JOptionPane.showConfirmDialog(null,
+                    "Do you think you will cook at home more than you eat out? \n\nRespond 'yes' if you will cook at home more and 'no' if not",
+                    "Expected Grocery Spending", JOptionPane.YES_NO_OPTION);
+            Double Groceries = 0.0;
+
+            if (userchoice2 == 0) {
+                JOptionPane.showMessageDialog(null,
+                        "You will probably spend around $400 per month on groceries and $200 for eating out",
+                        "Grocery Spending", JOptionPane.INFORMATION_MESSAGE);
+                Groceries = 600.0;
+
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "You will probably spend around $300 per month on groceries and $400 for eating out",
+                        "Grocery Spending", JOptionPane.INFORMATION_MESSAGE);
+                Groceries = 700.0;
+            }
+
+            String studentLoans = JOptionPane.showInputDialog(null,
+                    "Do you have any studnet loans? \n\nIf yes, respond with your monthly payment amount below... If no, respond with '0'");
+            double Student_Loans = Double.parseDouble(studentLoans);
+
+            Double monthly_expenses = Rent + Groceries + Transportation + Student_Loans;
+            Double monthly_income = post_tax_salary / 12;
+
+            JOptionPane.showMessageDialog(null,
+                    "So far with these essential expenses, you are spending around $" + monthly_expenses
+                            + " per month... \n\nLeaving you with around $" + (monthly_income - monthly_expenses)
+                            + " excess money per month",
+                    "Essential Expenses", JOptionPane.INFORMATION_MESSAGE);
 
         } else {
             JOptionPane.showMessageDialog(null, "Goodbye " + name + "!");
