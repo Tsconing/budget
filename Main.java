@@ -2,7 +2,10 @@ package budget;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -174,8 +177,56 @@ public class Main {
 
                         // create little spreadsheet summary of income vs expenses
 
-                        MyFrame myFrame = new MyFrame(); // creates an instance of the MyFrame class (which extends
-                                                         // JFrame)
+                        JFrame myFrame = new JFrame(); // creates an instance of the MyFrame class (which extends
+                                                       // JFrame)
+
+                        Create_Frame(myFrame); // calls the Create_Frame method to build a grid that we can add jlabels
+                                               // into
+
+                        JButton calculateButton = new JButton("Calculate");
+                        calculateButton.addActionListener((ActionListener) myFrame);
+
+                        JButton exitButton = new JButton("exit");
+
+                        // Green Labels
+                        JLabel Pre_Tax_Salary_Label = new JLabel("Pre-Tax Income");
+                        JLabel Post_Tax_Salary_Label = new JLabel("Post-Tax Income");
+
+                        // Red Labels
+                        JLabel Rent_Label = new JLabel("Rent");
+                        JLabel Groceries_Label = new JLabel("Groceries");
+                        JLabel Student_Loans_Label = new JLabel("Student Loans");
+                        JLabel Insurance_Miscellaneous_Label = new JLabel("Insurance + Miscellaneous");
+                        JLabel Entertainment_Label = new JLabel("Entertainment");
+
+                        // Totals
+                        JLabel Excess_money_Label = new JLabel("Excess Money");
+
+                        MyFrame.add(Pre_Tax_Salary_Label);
+                        myFrame.add(Post_Tax_Salary);
+                        this.add(Rent);
+                        this.add(Groceries);
+                        this.add(Student_Loans);
+                        this.add(Insurance_Miscellaneous);
+                        this.add(Entertainment);
+                        this.add(Excess_money);
+
+                        JLabel Pre_Tax_Salary_Amount = new JLabel();
+                        JLabel Post_Tax_Salary_Amount = new JLabel();
+                        JLabel Rent_Amount = new JLabel();
+                        JLabel Groceries_Amount = new JLabel();
+                        JLabel Miscellaneous_Amount = new JLabel();
+                        JLabel Entertainment_Amount = new JLabel();
+                        JLabel Excess_Amount = new JLabel();
+
+                        this.add(Pre_Tax_Salary_Amount);
+                        this.add(Post_Tax_Salary_Amount);
+                        this.add(Rent_Amount);
+                        this.add(Groceries_Amount);
+                        this.add(Miscellaneous_Amount);
+                        this.add(Entertainment_Amount);
+                        this.add(Excess_Amount);
+
                         String Rent_Amount = ("$" + Rent);
                         JLabel Pre_Tax_Salary_Amount = new JLabel("$" + Pre_Tax_Salary);
                         JLabel Post_Tax_Salary_Amount = new JLabel("$" + post_tax_salary);
@@ -222,4 +273,21 @@ public class Main {
                 // redPanel.add(label2);
 
         }
+
+        public static void Create_Frame(JFrame frame) {
+                frame.setTitle("Your NYC Budget at a Glance"); // set the title of the this
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // set the close operation of the frame to the
+                                                                      // exit button
+                                                                      // in top right
+
+                frame.setResizable(true); // set the frame to be resizable
+
+                frame.setSize(1000, 1000); // set the x,y size of the frame
+                frame.getContentPane().setBackground(Color.LIGHT_GRAY); // set the background color of the frame
+
+                // to set a frame with the flow layout we setLayout to new FlowLayout
+                frame.setLayout(new GridLayout(8, 2));
+
+        }
+
 }
